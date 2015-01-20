@@ -14,21 +14,18 @@
 		 * @param quantity
 		 * @returns {number}
 		 */
-		function price(quantity) {
+		function getPrice(quantity) {
 			var price = base;
 			var max = 0;
 
 			sortedBreaks
 				.forEach(function (_break) {
-					_break = parseInt(_break);
+					_break = parseInt(_break, 10);
 					if (_break > max) { max = _break; }
-					
-					if (quantity >= _break) {
-						price = breaks[_break];
-					}
+					if (quantity >= _break) { price = breaks[_break]; }
 				});
 
-			price = (Math.round(100 * quantity * (price || breaks[max])) / 100);
+			price = Math.round(100 * quantity * (price || breaks[max])) / 100;
 
 			return price;
 		}
@@ -39,17 +36,19 @@
 		 * @returns {Array}
 		 */
 		function humanize(vague) {
-			
 			var statements = sortedBreaks.map(function (_break, idx, arr) {
-					_break = parseInt(_break);
-					var nextQb = parseInt(arr[idx + 1]);
+					_break = parseInt(_break, 10);
+					var nextBreak = parseInt(arr[idx + 1], 10);
 					var start = _break;
 					var end = 0; 
 
 					if (idx === arr.length - 1 || vague) { end = '+'; }
-					else { end = '-' + (nextQb - 1); }
+					else { end = '-' + (nextBreak - 1); }
 
-					return {range: start + end, price: breaks[_break.toString()].toFixed(2)};
+					return {
+						range: start + end, 
+						price: breaks[_break.toString()].toFixed(2)
+					};
 				});
 			
 			statements.unshift({
@@ -60,7 +59,7 @@
 			return statements;
 		}
 
-		this.price = price;
+		this.price = getPrice;
 		this.humanize = humanize;
 	}
 
