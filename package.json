@@ -6,10 +6,24 @@
   "scripts": {
     "test": "mocha -R spec"
   },
-  "author": "Adam Snodgrass <overra@gmail.com>",
+  "author": {
+    "name": "Adam Snodgrass",
+    "email": "overra@gmail.com",
+    "url": "http://overra.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "mocha": "^2.1.0",
     "should": "^4.6.1"
+  },
+  "files": [
+    "index.js",
+    "lib/",
+    "LICENSE",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shopfrontjs/pricebreak.git"
   }
 }
