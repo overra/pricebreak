@@ -1,0 +1,15 @@
+{
+  "name": "pricebreak",
+  "version": "0.0.1",
+  "description": "Define pricebreaks and calculate total price based on quantity",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "author": "Adam Snodgrass <overra@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^2.1.0",
+    "should": "^4.6.1"
+  }
+}
